@@ -1,7 +1,4 @@
-class PoligonalModel:
-    def __init__(poligons: Poligon, texture: Texture):
-        self.Polygons = poligons
-        self.Textures = texture
+import Point3D as Point3D
 
 
 class Poligon:
@@ -11,3 +8,12 @@ class Poligon:
 
 class Texture:
     pass
+
+
+class PoligonalModel:
+    Poligons: Poligon
+    Texture: Texture
+
+    def __init__(self, poligons, texture):
+        self.Polygons = poligons
+        self.Textures = texture

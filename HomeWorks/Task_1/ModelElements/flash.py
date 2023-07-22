@@ -1,6 +1,8 @@
+import Point3D as Point3D
+
 class Flash:
     Location: Point3D
-    Angle: Angl3D
+    Angle: Angle3D
     Color: Color
     Power: float
 

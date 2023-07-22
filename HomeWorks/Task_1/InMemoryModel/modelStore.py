@@ -1,8 +1,8 @@
-from ModelElements import poligonModel
-from Scene
-from Flash import
-from PoligonModel import
-from
+from HomeWorks.Task_1.ModelElements.poligonalModel import PoligonalModel
+from HomeWorks.Task_1.ModelElements.flash import Flash
+from HomeWorks.Task_1.ModelElements.scene import Scene
+from HomeWorks.Task_1.ModelElements.camera import Camera
+from interface import IModelChagedObserver
 
 
 class ModelStore:
@@ -10,9 +10,9 @@ class ModelStore:
     Scenes: Scene()
     Flashes: Flash()
     Cameras: Camera()
-    changeObservers: IModelChangeObserver()
+    changeObservers: IModelChagedObserver()
 
-    def __init__(self, models, scenes , flashes, cameras, change_Observers):
+    def __init__(self, models, scenes, flashes, cameras, change_Observers):
         self.Models = models
         self.Scenes = scenes
         self.Flashes = flashes
