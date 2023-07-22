@@ -6,11 +6,11 @@ from
 
 
 class ModelStore:
-    Models: PoligonModel
-    Scenes: Scene
-    Flashes: Flash
-    Cameras: Camera
-    changeObservers: IModelChangeObserver
+    Models: PoligonalModel()
+    Scenes: Scene()
+    Flashes: Flash()
+    Cameras: Camera()
+    changeObservers: IModelChangeObserver()
 
     def __init__(self, models, scenes , flashes, cameras, change_Observers):
         self.Models = models
@@ -24,3 +24,4 @@ class ModelStore:
         return scene
 
     def NotifyChange(IModelChanger):
+        pass
