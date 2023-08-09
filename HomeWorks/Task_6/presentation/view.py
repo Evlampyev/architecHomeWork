@@ -1,3 +1,5 @@
+import sys
+
 from HomeWorks.Task_6.data.iBookSorting import Sorting
 from HomeWorks.Task_6.domain.book import Book
 
@@ -17,18 +19,18 @@ class Views:
         book_store.add_book(book4)
 
         # Получаем список всех книг
-        # self.print_all_books(book_store)
+        self.print_all_books(book_store)
 
         # удаляем третью и снова выводим
-        # book_store.remove_book(book3)
-        # self.print_all_books(book_store)
+        book_store.remove_book(book3)
+        self.print_all_books(book_store)
         print("---- \n"
               "1 - добавить книгу в БД, \n"
               "2 - удалить книгу из БД \n"
               "3 - вывести список всех книг в БД \n"
               "4 - выход \n")
         act = input("Что делаем? ")
-        while act != '4':
+        while True:
             match act:
                 case '1':
                     self.iadd_book()
@@ -36,6 +38,8 @@ class Views:
                     self.iremove_book()
                 case '3':
                     self.iprint_all_books()
+                case '4':
+                    sys.exit()
                 case _:
                     print("Неверный ввод")
             act = input("Что делаем? ")
@@ -46,7 +50,6 @@ class Views:
         book = self.book_store.get_book_by_id(remove_id)
         self.book_store.remove_book(book)
         print(f"Книга с id = {remove_id} удалена")
-
 
     def iadd_book(self):
         print('---Добавление книги---')
