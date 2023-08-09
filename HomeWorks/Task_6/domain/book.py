@@ -32,10 +32,15 @@ class Book:
         return self.price
 
     def __str__(self):
-        return f"Книга: {self.get_title()}, " \
+        return f"Id = {self.id}, Книга: {self.get_title()}, " \
                f"Автор: {self.get_author()}, Цена: $ {self.get_price()}"
 
     def set_price(self, price):
         """Установка стоимости книги \n
         :param price стоимость"""
         self.price = price
+
+    def __lt__(self, other):
+        """Метод для сравнения двух книг, \n
+        сортируются по цене"""
+        return self.price < other.price

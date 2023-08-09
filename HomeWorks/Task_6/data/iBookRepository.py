@@ -33,3 +33,6 @@ class IBookRepository(ABC):
         """Определяет количество книг в БД /n
         :return int"""
         pass
+    def get_book_by_id(self):
+        """Возвращает книгу по id"""
+        pass

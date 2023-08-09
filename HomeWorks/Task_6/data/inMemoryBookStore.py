@@ -26,3 +26,13 @@ class InMemoryBookStore(IBookRepository):
 
     def __len__(self):
         return len(self.books)
+
+    def get_book_by_id(self, id):
+        books = self.get_all_books()
+        for book in books:
+            if book.id == id:
+                result = book
+        if result is not None:
+            return result
+        else:
+            print("Такого id не обнаружено")
