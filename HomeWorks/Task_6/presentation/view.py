@@ -2,9 +2,10 @@ import sys
 
 from HomeWorks.Task_6.data.iBookSorting import Sorting
 from HomeWorks.Task_6.domain.book import Book
+from HomeWorks.Task_6.presentation.userInterface import UserInterface
 
 
-class Views:
+class Views(UserInterface):
     def __init__(self, book_store):
         self.book_store = book_store
         # Добавляем книги в магазин
@@ -19,11 +20,12 @@ class Views:
         book_store.add_book(book4)
 
         # Получаем список всех книг
-        self.print_all_books(book_store)
+        self.iprint_all_books()
 
         # удаляем третью и снова выводим
+        print('Я удалил книгу с id=3')
         book_store.remove_book(book3)
-        self.print_all_books(book_store)
+        self.iprint_all_books()
         print("---- \n"
               "1 - добавить книгу в БД, \n"
               "2 - удалить книгу из БД \n"
@@ -45,13 +47,15 @@ class Views:
             act = input("Что делаем? ")
 
     def iremove_book(self):
+
         self.iprint_all_books()
-        remove_id = int(input('Введите id книги, которую хотите удалить'))
+        remove_id = int(input('Введите id книги, которую хотите удалить: '))
         book = self.book_store.get_book_by_id(remove_id)
         self.book_store.remove_book(book)
         print(f"Книга с id = {remove_id} удалена")
 
     def iadd_book(self):
+        """Пользовательский интерфейс для добавления новой книги"""
         print('---Добавление книги---')
         id = int(input('Введите id книги: '))
         title = input("Введите название книги: ")
@@ -61,6 +65,7 @@ class Views:
         self.book_store.add_book(book)
 
     def iprint_all_books(self):
+        """Пользовательский интерфейс для вывода списка всех книг"""
         all_books = self.choose_sorting(self.book_store.get_all_books())
         print("------------------------- \n     Список всех книг:")
         for book in all_books:
@@ -69,6 +74,7 @@ class Views:
 
     @staticmethod
     def choose_sorting(all_books):
+        """Помощь пользователю в выборе способа сортировки книг для вывода на экран"""
         sort = int(input("--Сортировать:--\n"
                          "1 - не сортировать, \n"
                          "2 - по алфавиту, \n"
