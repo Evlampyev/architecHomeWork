@@ -1,7 +1,8 @@
 import sys
 
-from HomeWorks.Task_6.data.iBookSorting import Sorting
 from HomeWorks.Task_6.domain.book import Book
+from HomeWorks.Task_6.presentation.iValidate import IValidate
+from HomeWorks.Task_6.presentation.sortingService import SortingService
 from HomeWorks.Task_6.presentation.userInterface import UserInterface
 
 
@@ -20,12 +21,12 @@ class Views(UserInterface):
         book_store.add_book(book4)
 
         # Получаем список всех книг
-        self.iprint_all_books()
+        # self.iprint_all_books()
 
         # удаляем третью и снова выводим
         print('Я удалил книгу с id=3')
         book_store.remove_book(book3)
-        self.iprint_all_books()
+        # self.iprint_all_books()
         print("---- \n"
               "1 - добавить книгу в БД, \n"
               "2 - удалить книгу из БД \n"
@@ -51,39 +52,38 @@ class Views(UserInterface):
         self.iprint_all_books()
         remove_id = int(input('Введите id книги, которую хотите удалить: '))
         book = self.book_store.get_book_by_id(remove_id)
-        self.book_store.remove_book(book)
-        print(f"Книга с id = {remove_id} удалена")
+        if book == None:
+            print("Такого id не обнаружено")
+        else:
+            self.book_store.remove_book(book)
+            print(f"Книга с id = {remove_id} удалена")
 
     def iadd_book(self):
         """Пользовательский интерфейс для добавления новой книги"""
         print('---Добавление книги---')
-        id = int(input('Введите id книги: '))
+        while True:
+            id = int(input('Введите id книги: '))
+            if IValidate.id_valid(self.book_store.get_book_by_id(id)):
+                break
+            else:
+                print("Такой id уже есть в БД")
+
         title = input("Введите название книги: ")
-        author = input("Введите автора: ")
+        while True:
+            author = input("Введите автора: ")
+            if IValidate.author_valid(author):
+                break
+            else:
+                print("Должно быть два-три слова с заглавной буквы")
+
         price = float(input("Цена книги: "))
         book = Book(id, title, author, price)
         self.book_store.add_book(book)
 
     def iprint_all_books(self):
         """Пользовательский интерфейс для вывода списка всех книг"""
-        all_books = self.choose_sorting(self.book_store.get_all_books())
+        all_books = SortingService.coose_sorting(self.book_store.get_all_books())
         print("------------------------- \n     Список всех книг:")
         for book in all_books:
             print(book)
         print(f'В базе {len(self.book_store)} книг(и)')
-
-    @staticmethod
-    def choose_sorting(all_books):
-        """Помощь пользователю в выборе способа сортировки книг для вывода на экран"""
-        sort = int(input("--Сортировать:--\n"
-                         "1 - не сортировать, \n"
-                         "2 - по алфавиту, \n"
-                         "3 - сортировать по цене по возрастанию: \n"
-                         "4 - сортировать по цене убыванию: \n... "))
-        if sort == 2:
-            all_books = Sorting.by_author(all_books)
-        elif sort == 3:
-            all_books = Sorting.by_price(all_books)
-        elif sort == 4:
-            all_books = Sorting.by_price_reverse(all_books)
-        return all_books
