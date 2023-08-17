@@ -5,7 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Seminars/Task_4/task1" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.11 (architecHomeWork)" jdkType="Python SDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyNamespacePackagesService">
@@ -16,6 +16,7 @@
         <option value="$MODULE_DIR$/Seminars/Task_6/data" />
         <option value="$MODULE_DIR$/HomeWorks/Task_6/data" />
         <option value="$MODULE_DIR$/HomeWorks/Task_6/domain" />
+        <option value="$MODULE_DIR$/Seminars/Task_8/4_mvpvm" />
       </list>
     </option>
   </component>
