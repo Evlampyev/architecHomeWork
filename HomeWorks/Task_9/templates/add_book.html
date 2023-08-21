@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Новая книга</title>
+</head>
+<body>
+<h3>Заполните поля для новой книги:</h3>
+
+
+<form action="addBook" method="POST">
+    <fieldset>
+        <legend>Новая книга</legend>
+        <label>Название<input type="text" name="Title1" placeholder="Война и мир"></label>
+        <label>Автор<input type="text" name="Author" required placeholder="Толстой Лев Николаевич"></label>
+        <label>Количество страниц<input type="number" name="Pages" required placeholder="1000"></label>
+        <label>Год издания<input type="date" name="Year" required placeholder="01.01.1869"></label>
+    </fieldset>
+
+    <button name="DOtn" type="submit">ДОБАВИТЬ КНИГУ В БИБЛИОТЕКУ</button>
+</form>
+
+<hr>
+<form action="/forward/" method="POST">
+    <button name="forwardBtn" type="submit">НА ГЛАВНУЮ</button>
+</form>
+
+
+<hr>
+
+</body>
+</html>
